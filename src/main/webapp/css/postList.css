@@ -1,0 +1,157 @@
+div {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 78%;
+    height: 100%;
+    margin: auto;
+    gap: 3%;
+}
+
+.search-container {
+    border: 1px solid gray;
+    margin-top: 50px;
+    width: 92%;
+    height: 64px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.search-date,
+.search-category,
+.search-keywards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-date {
+    width: 35%;
+    margin-right: 2%;
+}
+
+.date-box-left,
+.date-box-right {
+    width: 140px;
+    height: 28px;
+    text-align: center;
+}
+
+.date-box-left {
+    margin-left: 19px;
+    margin-right: 9px;
+}
+
+.date-box-right {
+    margin: 0 9px;
+}
+
+.search-category {
+    width: 13%;
+}
+
+.select-box {
+    width: 90%;
+    height: 29px;
+    text-align: center;
+}
+
+.search-keywards {
+    width: 33%;
+    margin-right: 2%;
+}
+
+.keywards-box {
+    width: 96%;
+    height: 28px;
+    text-align: center;
+}
+
+.botton-box {
+    display: flex;
+    align-items: center;
+}
+
+.search-button {
+    height: 30px;
+    width: 76px;
+}
+
+.post-submit-button {
+    height: 34px;
+    width: 90px;
+}
+
+
+/* 게시물 목록 */
+.tableLine1 {
+    height: 1px;
+    background-color: black;
+    border: none;
+    width: 98%;
+    margin: 0;
+}
+
+.tableLine2 {
+    height: 1px;
+    background-color: lightgray;
+    border: none;
+    width: 98%;
+    margin: 0;
+}
+
+.posts-container {
+    width: 100%;
+    height: 68%;
+    min-height: 440px;
+    margin-bottom: 50px;
+}
+
+.posts-title,
+.posts-item,
+.pages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 35px;
+}
+
+.posts-title {
+    margin: 3px 0;
+    font-weight: bold;
+}
+
+.posts-item {
+}
+
+.pages {
+    margin-top: 5px;
+}
+
+.new-post {
+    display: flex;
+    justify-content: end;
+    margin-right: 20px;
+}
+
+.post-category {width: 8%;}
+.post-files {width: 5%;}
+.post-title {width: 42%;}
+.post-writer {width: 8%;}
+.post-views {width: 8%;}
+.post-created {width: 12%;}
+.post-updated {width: 12%;}
