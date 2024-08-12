@@ -2,6 +2,20 @@ div {
     font-size: 14px;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+a:active {
+    font-weight: bold;
+    color: orange;
+}
+
 body {
     width: 100vw;
     height: 100vh;
@@ -17,7 +31,7 @@ body {
     width: 78%;
     height: 100%;
     margin: auto;
-    gap: 3%;
+    gap: 2%;
 }
 
 .search-container {
@@ -80,7 +94,7 @@ body {
     text-align: center;
 }
 
-.botton-box {
+.button-box {
     display: flex;
     align-items: center;
 }
@@ -95,6 +109,12 @@ body {
     width: 90px;
 }
 
+.total-posts {
+    width: 98%;
+    margin-top: 7px;
+    font-size: 13px;
+    text-align: left;
+}
 
 /* 게시물 목록 */
 .tableLine1 {
@@ -148,10 +168,22 @@ body {
     margin-right: 20px;
 }
 
-.post-category {width: 8%;}
-.post-files {width: 5%;}
-.post-title {width: 42%;}
+.post-category {width: 9%;}
+.post-files {width: 4%;}
+.post-title {width: 42%; text-align: left;}
 .post-writer {width: 8%;}
 .post-views {width: 8%;}
 .post-created {width: 12%;}
 .post-updated {width: 12%;}
+
+.clip-img {
+    height: 50%;
+    width: auto;
+    margin-left: 10%;
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

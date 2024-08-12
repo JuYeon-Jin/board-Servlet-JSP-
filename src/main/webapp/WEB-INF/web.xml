@@ -9,6 +9,24 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>BoardController</servlet-name>
-        <url-pattern>/board1/*</url-pattern>
+        <url-pattern>/board/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FileController</servlet-name>
+        <servlet-class>com.study.connection.controller.FileController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FileController</servlet-name>
+        <url-pattern>/file/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ValidationController</servlet-name>
+        <servlet-class>com.study.connection.controller.ValidationController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ValidationController</servlet-name>
+        <url-pattern>/validation/*</url-pattern>
     </servlet-mapping>
 </web-app>

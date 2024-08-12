@@ -21,7 +21,7 @@
 
 <br/>
 <!-- 게시물 목록 페이지로 이동하는 버튼 -->
-<form action="/board1/posts" method="get" style="margin-top: 20px;">
+<form action="/board/posts" method="get" style="margin-top: 20px;">
     <button type="submit">게시물 목록 보기</button>
 </form>
 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.connection.mapper.BoardMapper">
+
+    <!-- 게시물 전체 목록 불러오기 -->
+    <select id="selectAllPosts" resultType="com.study.connection.dto.post.PostListDTO">
+        SELECT p.id AS id, p.title AS title,
+               DATE_FORMAT(p.created_at, '%Y-%m-%d %H:%i') AS createdAt,
+               DATE_FORMAT(p.updated_at, '%Y-%m-%d %H:%i') AS updatedAt,
+               p.writer AS writer, p.views AS views, c.name AS categoryName,
+               (SELECT COUNT(*) > 0 FROM files f WHERE f.post_id = p.id) AS fileExist
+        FROM posts p JOIN category c
+            ON p.category_id = c.id
+        WHERE p.is_deleted = false
+        ORDER BY p.id DESC
+    </select>
+
+
+    <!-- 전체 카테고리 불러오기 -->
+    <select id="selectAllCategories" resultType="com.study.connection.dto.CategoryDTO">
+        SELECT id, name
+        FROM category
+    </select>
+
+    <!-- 게시물 번호 → 게시물 상세 내용 불러오기 -->
+    <select id="selectPostById" parameterType="java.lang.Integer" resultType="com.study.connection.dto.post.PostDetailDTO">
+        SELECT p.id AS id, p.title AS title, p.content AS content,
+               DATE_FORMAT(p.created_at, '%Y-%m-%d %H:%i') AS createdAt,
+               DATE_FORMAT(p.updated_at, '%Y-%m-%d %H:%i') AS updatedAt,
+               p.writer AS writer, p.views AS views, c.name AS categoryName
+        FROM posts p JOIN category c
+                          ON p.category_id = c.id
+        WHERE p.id= #{postId}
+    </select>
+
+    <!-- 게시물 번호 → 게시물에 첨부된 파일 불러오기 -->
+    <select id="selectFileByPostId" parameterType="java.lang.Integer" resultType="com.study.connection.dto.file.FileListDTO">
+        SELECT id, file_name AS fileName
+        FROM files
+        WHERE post_id = #{postId}
+    </select>
+
+    <!-- 조회수 증가 +1 -->
+    <update id="updateViewCount" parameterType="java.lang.Integer">
+        UPDATE posts
+        SET views = views + 1
+        WHERE id = #{postId}
+    </update>
+
+    <!-- 파일 번호 → 파일정보 불러오기 -->
+    <select id="selectFileByFileId" parameterType="java.lang.Integer" resultType="com.study.connection.dto.file.FileDownloadDTO">
+        SELECT file_name AS fileName , file_size AS fileSize, content_type AS contentType, data
+        FROM files
+        WHERE id = #{fileId}
+    </select>
+
+    <!-- 게시물 저장 -->
+    <insert id="addNewPost" parameterType="com.study.connection.dto.post.PostInsertDTO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO posts (category_id, title, content, writer, password)
+        VALUES (#{categoryId}, #{title}, #{content}, #{writer}, #{hashPassword})
+    </insert>
+
+    <!-- 파일 추가(게시물 저장 이후 첨부된 파일이 있을 시) -->
+    <insert id="addFiles" parameterType="com.study.connection.dto.file.FileUploadDTO">
+        INSERT INTO files (post_id, file_name, file_size, content_type, data)
+        VALUES (#{postId}, #{fileName}, #{fileSize}, #{contentType}, #{data})
+    </insert>
+
+    <select id="matchingPassword" parameterType="java.lang.String">
+
+    </select>
+
+    <!-- 파일 업데이트 -->
+    <update id="updatePost" parameterType="com.study.connection.dto.post.PostUpdateDTO">
+        UPDATE posts
+        SET category_id = #{categoryId}, title = #{title}, content = #{content}, writer = #{writer}
+        WHERE id = #{id} AND password = #{password}
+    </update>
+
+    <delete id="deleteFile" parameterType="java.lang.Integer">
+        DELETE FROM files WHERE id = #{fileId}
+    </delete>
+
+</mapper>

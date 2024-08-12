@@ -1,4 +1,4 @@
-package com.study.connection.dto;
+package com.study.connection.dto.post;
 
 public class PostListDTO {
     private int id;
@@ -8,6 +8,7 @@ public class PostListDTO {
     private String writer;
     private int views;
     private String categoryName;
+    private boolean fileExist;
 
     public PostListDTO() {
     }
@@ -21,8 +22,6 @@ public class PostListDTO {
         this.views = views;
         this.categoryName = categoryName;
     }
-
-    // Getters and Setters
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -44,4 +43,12 @@ public class PostListDTO {
 
     public String getCategoryName() { return categoryName; }
     public void setCategoryName(String categoryName) { this.categoryName = categoryName; }
+
+    public boolean isFileExist() {
+        return fileExist;
+    }
+
+    public void setFileExist(boolean fileExist) {
+        this.fileExist = fileExist;
+    }
 }
